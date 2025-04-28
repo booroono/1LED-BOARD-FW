@@ -1,0 +1,50 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "C:\\Program Files (x86)\\Atmel\\Studio\\7.0\\packs\\arm\\CMSIS\\5.4.0\\CMSIS\\Core\\Include",
+                "C:\\Program Files (x86)\\Atmel\\Studio\\7.0\\toolchain\\arm\\arm-gnu-toolchain\\arm-none-eabi\\include",
+                "C:\\Program Files (x86)\\Atmel\\Studio\\7.0\\toolchain\\arm\\arm-gnu-toolchain\\lib\\gcc\\arm-none-eabi\\6.3.1\\include",
+                "C:\\Program Files (x86)\\Atmel\\Studio\\7.0\\toolchain\\arm\\arm-gnu-toolchain\\lib\\gcc\\arm-none-eabi\\6.3.1\\include-fixed",
+                "C:\\Program Files (x86)\\Atmel\\Studio\\7.0\\Packs\\atmel\\SAMD51_DFP\\1.2.139\\**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE",
+                "__SAMD51N20A__"
+            ],
+            "cStandard": "c11",
+            "cppStandard": "c++11",
+            "intelliSenseMode": "windows-gcc-arm",
+            "compilerPath": "C:\\Program Files (x86)\\Atmel\\Studio\\7.0\\toolchain\\arm\\arm-gnu-toolchain\\bin\\arm-none-eabi-gcc-6.3.1.exe"
+        },
+        {
+            "name": "Mac",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/Applications/microchip/mplabx/v6.05/packs/ARM/CMSIS/5.4.0/CMSIS/Core/Include",
+                "/Applications/microchip/arm-none-eabi/arm-none-eabi/include",
+                "/Applications/microchip/arm-none-eabi/lib/gcc/arm-none-eabi/6.3.1/include",
+                "/Applications/microchip/arm-none-eabi/lib/gcc/arm-none-eabi/6.3.1/include-fixed",
+                "/Applications/microchip/mplabx/v6.05/packs/microchip_studio_pack/Atmel.SAMD51_DFP.1.2.139/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE",
+                "__SAMD51N20A__"
+            ],
+            "macFrameworkPath": [
+                "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"
+            ],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c11",
+            "cppStandard": "c++11",
+            "intelliSenseMode": "macos-clang-arm"
+        }
+    ],
+    "version": 4
+}

@@ -1,0 +1,17 @@
+{
+	"files.associations": {
+		"peripheral.h": "c",
+		"drv_lcd1602.h": "c",
+		"atmel_start.h": "c",
+		"at25xxx.h": "c",
+		"bsp.h": "c",
+		"main.h": "c",
+		"random": "c",
+		"manual_test.h": "c",
+		"functional": "c",
+		"__locale": "c",
+		"tws_test.h": "c",
+		"def.h": "c"
+	},
+	"C_Cpp.errorSquiggles": "Enabled"
+}
