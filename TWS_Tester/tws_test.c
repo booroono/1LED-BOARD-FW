@@ -356,7 +356,7 @@ void Test_Mode(void) {
 						delay_ms(10);
 					}
           Solenoid_Valve_Control(SOL_ON, SOL_PROX);
-					delay_ms(100);
+					delay_ms(200);
 					sumOpen /= 5;
 					usart->data[resultLength++] = sumOpen >> 8;
 					usart->data[resultLength++] = sumOpen & 0xFF;

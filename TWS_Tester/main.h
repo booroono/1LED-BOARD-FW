@@ -23,15 +23,16 @@
 #include "tws_test.h"
 #include "usart.h"
 
-#define FW_VER 			25
+#define FW_VER 			126
 
-// ver 0.01 : First Coding Done
-// ver 0.10 : HW Rev 1.1 
-// ver 0.11 : CONN OS Delay Select ADD
-// Ver 0.12 : CONN OS Delay ADD
-// Ver 0.13 : Prox Delay edit
-// Ver 0.22 : Jig delay Modify, Conn OS SEQ Change
+// Ver 1.26 : 펌웨어 버전 업데이트
+// ver 0.25 : test ok led, Prox Test before delay delete
 // Ver 0.24 : Prox Test before delay Add
-// Ver 0.25 : test ok led, Prox Test before delay delete
+// Ver 0.22 : Jig delay Modify, Conn OS SEQ Change
+// Ver 0.13 : Prox Delay edit
+// Ver 0.12 : CONN OS Delay ADD
+// Ver 0.11 : CONN OS Delay Select ADD
+// Ver 0.10 : HW Rev 1.1 
+// ver 0.01 : First Coding Done
 
 #endif /* MAIN_H_ */
