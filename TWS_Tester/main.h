@@ -23,8 +23,9 @@
 #include "tws_test.h"
 #include "usart.h"
 
-#define FW_VER 			126
+#define FW_VER 			127
 
+// Ver 1.27 : I2C 오류 발생시 Buffer 값 0으로 리셋되게 수정
 // Ver 1.26 : 펌웨어 버전 업데이트
 // ver 0.25 : test ok led, Prox Test before delay delete
 // Ver 0.24 : Prox Test before delay Add

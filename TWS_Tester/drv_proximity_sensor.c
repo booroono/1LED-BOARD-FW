@@ -21,12 +21,20 @@ void Prox_Sensor_On(void) {						// activate adc
 uint8_t Prox_Sensor_Info_Read(void) {		// device id read
 	uint8_t reg = 0xA0;  // Sharp 센서에서는 디바이스 ID 레지스터가 0xA0
 	uint8_t buffer = 0;
+	uint8_t error = 0; // 에러 발생 플래그 추가
 
 	if(io_write(I2C_io, &reg, 1) < 0) {
 		i2cErrCount++;
+		error = 1; // 에러 발생 표시
 	}
 	if(io_read(I2C_io, &buffer, 1) < 0) {
 		i2cErrCount++;
+		error = 1; // 에러 발생 표시
+	}
+
+	// 에러가 발생했으면 buffer를 0으로 초기화
+	if(error) {
+		buffer = 0;
 	}
 
 	return buffer;
@@ -116,13 +124,22 @@ void Prox_Sensor_Test_Setting(void) {				// test configuration - Sharp 센서용
 
 uint16_t Prox_Sensor_Read_Offset(void) {					// read offset - Sharp 센서
 	uint8_t buffer[2] = {0,};
+	uint8_t error = 0; // 에러 발생 플래그 추가
 	buffer[0] = 0xC3;  // Sharp 센서에서는 오프셋 카운트 레지스터가 0xC3
 	
 	if(io_write(I2C_io, &buffer[0], 1) < 0) {
 		i2cErrCount++;
+		error = 1; // 에러 발생 표시
 	}
 	if(io_read(I2C_io, buffer, 2) < 0) {
 		i2cErrCount++;
+		error = 1; // 에러 발생 표시
+	}
+	
+	// 에러가 발생했으면 buffer를 0으로 초기화
+	if(error) {
+		buffer[0] = 0;
+		buffer[1] = 0;
 	}
 	
 	return ((buffer[1] << 8) | buffer[0]) & 0x7FFF;  // 15비트 값
@@ -130,13 +147,22 @@ uint16_t Prox_Sensor_Read_Offset(void) {					// read offset - Sharp 센서
 
 uint16_t Prox_Sensor_Read_Value(void) {						// read value - Sharp 센서
 	uint8_t buffer[2] = {0,};
+	uint8_t error = 0; // 에러 발생 플래그 추가
 	buffer[0] = 0x90;  // Sharp 센서에서는 근접 데이터 레지스터가 0x90
 	
 	if(io_write(I2C_io, &buffer[0], 1) < 0) {
 		i2cErrCount++;
+		error = 1; // 에러 발생 표시
 	}
 	if(io_read(I2C_io, buffer, 2) < 0) {
 		i2cErrCount++;
+		error = 1; // 에러 발생 표시
+	}
+
+	// 에러가 발생했으면 buffer를 0으로 초기화
+	if(error) {
+		buffer[0] = 0;
+		buffer[1] = 0;
 	}
 
 	return ((buffer[1] << 8) | buffer[0]) & 0x7FFF;  // 15비트 값 (0x7FFF = 0111 1111 1111 1111)
