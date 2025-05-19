@@ -1,8 +1,8 @@
 /*
  * drv_proximity_sensor.c
  *
- * Created: 2023-01-13 오전 12:35:39
- *  Author: monst
+ * Created: 2025-04-09 오전 12:35:39
+ *  Author: bruno
  * Modified: SHARP GP2AP130S 센서용으로 변경
  */ 
 
@@ -53,27 +53,27 @@ void Prox_Sensor_Test_Setting(void) {				// test configuration - Sharp 센서용
 		i2cErrCount++;
 	}
 	delay_ms(2);
-	buffer[0] = 0x86; buffer[1] = 0x50;	// Pgain 감소 (0xB0 -> 0x50)
+	buffer[0] = 0x86; buffer[1] = 0xB0;	// Pgain 원래값으로 복원 (0x50 -> 0xB0)
 	if(io_write(I2C_io, buffer, 2) < 0) {
 		i2cErrCount++;
 	}
 	delay_ms(2);
-	buffer[0] = 0x88; buffer[1] = 0x58;	// PS_LTH Low byte 
+	buffer[0] = 0x88; buffer[1] = 0x7D;	// PS_LTH Low byte (125)
 	if(io_write(I2C_io, buffer, 2) < 0) {
 		i2cErrCount++;
 	}
 	delay_ms(2);
-	buffer[0] = 0x89; buffer[1] = 0x02;	// PS_LTH High byte
+	buffer[0] = 0x89; buffer[1] = 0x00;	// PS_LTH High byte (125)
 	if(io_write(I2C_io, buffer, 2) < 0) {
 		i2cErrCount++;
 	}
 	delay_ms(2);
-	buffer[0] = 0x8A; buffer[1] = 0x20;	// PS_HTH Low byte
+	buffer[0] = 0x8A; buffer[1] = 0x9B;	// PS_HTH Low byte (155)
 	if(io_write(I2C_io, buffer, 2) < 0) {
 		i2cErrCount++;
 	}
 	delay_ms(2);
-	buffer[0] = 0x8B; buffer[1] = 0x03;	// PS_HTH High byte
+	buffer[0] = 0x8B; buffer[1] = 0x00;	// PS_HTH High byte (155)
 	if(io_write(I2C_io, buffer, 2) < 0) {
 		i2cErrCount++;
 	}
@@ -83,12 +83,12 @@ void Prox_Sensor_Test_Setting(void) {				// test configuration - Sharp 센서용
 		i2cErrCount++;
 	}
 	delay_ms(2);
-	buffer[0] = 0xC1; buffer[1] = 0x41;	// 오프셋 감소 (0x61 -> 0x41)
+	buffer[0] = 0xC1; buffer[1] = 0x61;	// 오프셋 원래값으로 복원 (0x41 -> 0x61)
 	if(io_write(I2C_io, buffer, 2) < 0) {
 		i2cErrCount++;
 	}
 	delay_ms(2);
-	buffer[0] = 0xC5; buffer[1] = 0x10;	// Gain_F 감소 (0x30 -> 0x10)
+	buffer[0] = 0xC5; buffer[1] = 0x30;	// Gain_F 원래값으로 복원 (0x10 -> 0x30)
 	if(io_write(I2C_io, buffer, 2) < 0) {
 		i2cErrCount++;
 	}
@@ -98,7 +98,7 @@ void Prox_Sensor_Test_Setting(void) {				// test configuration - Sharp 센서용
 		i2cErrCount++;
 	}
 	delay_ms(2);
-	buffer[0] = 0xF0; buffer[1] = 0x05;	// PLDrive 감소 (0x09 -> 0x05)
+	buffer[0] = 0xF0; buffer[1] = 0x09;	// PLDrive 원래값으로 복원 (0x05 -> 0x09)
 	if(io_write(I2C_io, buffer, 2) < 0) {
 		i2cErrCount++;
 	}

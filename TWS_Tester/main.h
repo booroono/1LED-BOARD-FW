@@ -1,8 +1,8 @@
 /*
  * main.h
  *
- * Created: 2023-01-13 오전 12:36:35
- *  Author: monst
+ * Created: 2025-04-09 오전 12:36:35
+ *  Author: bruno
  */ 
 
 
@@ -23,8 +23,8 @@
 #include "tws_test.h"
 #include "usart.h"
 
-#define FW_VER 			127
-
+#define FW_VER 			128
+// Ver 1.28 : IR 센서 설정값 Sharp에서 준 원래값으로 변경
 // Ver 1.27 : I2C 오류 발생시 Buffer 값 0으로 리셋되게 수정
 // Ver 1.26 : 펌웨어 버전 업데이트
 // ver 0.25 : test ok led, Prox Test before delay delete

@@ -1,8 +1,8 @@
 /*
  * drv_hall_sensor.c
  *
- * Created: 2023-01-13 오전 12:34:46
- *  Author: monst
+ * Created: 2025-04-09 오전 12:34:46
+ *  Author: bruno
  */ 
 
 #include "drv_hall_sensor.h"

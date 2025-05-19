@@ -1,8 +1,8 @@
 /*
  * ext_control.c
  *
- * Created: 2023-01-13 오전 12:36:15
- *  Author: monst
+ * Created: 2025-04-09 오전 12:36:15
+ *  Author: bruno
  */
 
 #include "manual_test.h"

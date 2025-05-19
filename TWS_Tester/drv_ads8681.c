@@ -1,8 +1,8 @@
 /*
  * drv_ads8681.c
  *
- * Created: 2023-01-13 오전 12:28:49
- *  Author: monst
+ * Created: 2025-04-09 오전 12:28:49
+ *  Author: bruno
  */ 
 
 #include "drv_ads8681.h"
