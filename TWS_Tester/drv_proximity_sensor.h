@@ -13,7 +13,7 @@
 
 typedef struct {
 	uint16_t closeOffset, openOffset;
-	uint16_t closeValue[5], openValue[5];
+	uint16_t closeValue[15], openValue[15];
 }prox_sensor_result_t;
 
 extern prox_sensor_result_t proxSensorResult;

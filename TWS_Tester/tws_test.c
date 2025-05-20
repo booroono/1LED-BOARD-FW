@@ -350,31 +350,66 @@ void Test_Mode(void) {
 					prox->openOffset = Prox_Sensor_Read_Offset(); // open Offset
 					usart->data[resultLength++] = prox->openOffset & 0xFF;
 					delay_ms(2);
-					for (uint8_t i = 0; i < 5; i++) { // open Value
+					// openValue 15회 측정
+					for (uint8_t i = 0; i < 15; i++) { // open Value
 						prox->openValue[i] = Prox_Sensor_Read_Value(); // debug 용
-						sumOpen += prox->openValue[i];
 						delay_ms(10);
 					}
+
+					// openValue 정렬 (선택 정렬)
+					for (uint8_t i = 0; i < 14; i++) {
+						uint8_t min_idx = i;
+						for (uint8_t j = i + 1; j < 15; j++) {
+							if (prox->openValue[j] < prox->openValue[min_idx]) {
+								min_idx = j;
+							}
+						}
+						uint16_t temp = prox->openValue[min_idx];
+						prox->openValue[min_idx] = prox->openValue[i];
+						prox->openValue[i] = temp;
+					}
+
+					sumOpen = 0; // sumOpen 초기화
+					// 최소, 최대 제외한 13개 값 합산
+					for (uint8_t i = 1; i < 14; i++) {
+						sumOpen += prox->openValue[i];
+					}
+
           Solenoid_Valve_Control(SOL_ON, SOL_PROX);
 					delay_ms(200);
-					sumOpen /= 5;
+					sumOpen /= 13; // 13개 값의 평균
 					usart->data[resultLength++] = sumOpen >> 8;
 					usart->data[resultLength++] = sumOpen & 0xFF;
+
 					prox->closeOffset = Prox_Sensor_Read_Offset(); // close Offset
 					usart->data[resultLength++] = prox->closeOffset & 0xFF;
 					delay_ms(2);
-					sumClose = 0;
-					for (uint8_t i = 0; i < 5; i++) { // close Value
+					sumClose = 0; // sumClose 초기화
+					// closeValue 15회 측정
+					for (uint8_t i = 0; i < 15; i++) { // close Value
 						prox->closeValue[i] = Prox_Sensor_Read_Value(); // debug 용
-						sumClose += prox->closeValue[i];
 						delay_ms(10);
 					}
-					sumClose /= 5;
-					usart->data[resultLength++] = sumClose >> 8;
-					usart->data[resultLength++] = sumClose & 0xFF;
-					if (sumClose < sumOpen) {
-						sumClose = sumOpen;
+
+					// closeValue 정렬 (선택 정렬)
+					for (uint8_t i = 0; i < 14; i++) {
+						uint8_t min_idx = i;
+						for (uint8_t j = i + 1; j < 15; j++) {
+							if (prox->closeValue[j] < prox->closeValue[min_idx]) {
+								min_idx = j;
+							}
+						}
+						uint16_t temp = prox->closeValue[min_idx];
+						prox->closeValue[min_idx] = prox->closeValue[i];
+						prox->closeValue[i] = temp;
 					}
+
+					sumClose = 0; // sumClose 다시 초기화 (정렬 후 합산 위함)
+					// 최소, 최대 제외한 13개 값 합산
+					for (uint8_t i = 1; i < 14; i++) {
+						sumClose += prox->closeValue[i];
+					}
+					sumClose /= 13; // 13개 값의 평균
 					u16Buffer1 = sumClose - sumOpen;
 					usart->data[resultLength++] = u16Buffer1 >> 8;
 					usart->data[resultLength++] = u16Buffer1 & 0xFF;

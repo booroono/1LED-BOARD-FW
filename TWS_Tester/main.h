@@ -23,7 +23,9 @@
 #include "tws_test.h"
 #include "usart.h"
 
-#define FW_VER 			128
+#define FW_VER 			130
+// Ver 1.30 : Prox 최대값 1개, 최소값 1개 빼고 13개 측정 후 평균 값 
+// Ver 1.29 : Prox 측정 횟수 15회로 변경
 // Ver 1.28 : IR 센서 설정값 Sharp에서 준 원래값으로 변경
 // Ver 1.27 : I2C 오류 발생시 Buffer 값 0으로 리셋되게 수정
 // Ver 1.26 : 펌웨어 버전 업데이트
